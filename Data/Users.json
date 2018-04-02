@@ -1,0 +1,23 @@
+﻿{
+  "users" :
+          [
+            {
+              "primaryKey": 0,
+              "name" : "Link",
+              "avatar" : "user_001.png",
+              "informations" : [ {"type" : "Default", "text": "default information text!"},
+                {"type" : "Event", "text": "Event information text!"},
+                {"type" : "Education", "text": "Education information text!"}
+              ]
+            },
+            {
+              "primaryKey": 1,
+              "name" : "Neo",
+              "avatar" : "user_002.png",
+              "informations" : [ {"type" : "Default", "text": "default information text!"},
+                {"type" : "Event", "text": "Event information text!"},
+                {"type" : "Education", "text": "Education information text!"}
+              ]
+            }
+          ]
+}

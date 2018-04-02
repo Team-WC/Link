@@ -1,0 +1,17 @@
+﻿{
+  "alarms" : [ 
+    {
+      "primaryKey": 0,
+      "type": "Post",
+      "text": "Link posted something",
+      "linkID": 0
+    },
+    {
+      "primaryKey": 1,
+      "type": "Information",
+      "text": "Link has 110.000 follwers",
+      "linkID": 0
+    }
+  ]
+  
+}

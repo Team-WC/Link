@@ -1,0 +1,24 @@
+﻿{
+  "posts": 
+  [
+    {
+      "primaryKey": 0,
+      "userID": 0,
+      "text" : "example-text",
+      "photos": [
+        "Post_0-1_Coffee.jpg",
+        "Post_0-2_Coffee.jpg"
+      ],
+      "timestamp": "2018-03-31 11:00 AM"
+    },
+    {
+      "primaryKey": 1,
+      "userID": 0,
+      "text" : "example-text2",
+      "photos": [
+        "Post_0-1_Coffee.jpg"
+      ],
+      "timestamp": "2018-03-31 12:00 AM"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+﻿{
+  "messages": [
+    {
+      "primaryKey" : 0,
+      "userID" : 0,
+      "trigger" : true,
+      "options" : [
+        {
+          "text" : "Hello",
+          "nextID" : 1
+        }
+      ]
+    },
+    {
+      "primaryKey" : 1,
+      "userID" : 1,
+      "trigger" : false,
+      "options" : [
+        {
+          "text" : "option1",
+          "nextID" : 2
+        },
+        {
+          "text" : "option2",
+          "nextID" : 2
+        }
+      ]
+    }
+  ]
+}
