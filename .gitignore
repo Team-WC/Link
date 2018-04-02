@@ -1,0 +1,5 @@
+*.meta
+JsonDotNet/
+Plugins/
+Prefabs/
+Resources/
