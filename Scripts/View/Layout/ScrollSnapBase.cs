@@ -514,10 +514,7 @@ public class ScrollSnapBase : MonoBehaviour, IBeginDragHandler, IDragHandler, IS
         _moveStarted = false;
 
         // Badge control
-        if (BadgeController.instance.badge[CurrentPage].activeInHierarchy == true)
-        {
-            BadgeController.instance.BadgeOff(CurrentPage);
-        }
+        BadgeController.instance.BadgeOff(CurrentPage);
     }
 
     /// <summary>

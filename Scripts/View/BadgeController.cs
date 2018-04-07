@@ -25,11 +25,13 @@ public class BadgeController : UIBehaviour
 
     public void BadgeOn(int page)
     {
-        badge[page].SetActive(true);
+        if (!badge[page].activeInHierarchy)
+            badge[page].SetActive(true);
     }
 
     public void BadgeOff(int page)
     {
-        badge[page].SetActive(false);
+        if (badge[page].activeInHierarchy)
+            badge[page].SetActive(false);
     }
 }
