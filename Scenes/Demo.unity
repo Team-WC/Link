@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 70765474}
   - component: {fileID: 70765473}
   m_Layer: 5
-  m_Name: Contents
+  m_Name: Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,10 +662,9 @@ GameObject:
   - component: {fileID: 139649932}
   - component: {fileID: 139649934}
   - component: {fileID: 139649933}
-  - component: {fileID: 139649936}
   - component: {fileID: 139649935}
   m_Layer: 5
-  m_Name: User Overlay
+  m_Name: User Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -751,39 +750,8 @@ MonoBehaviour:
   - {fileID: 1527810161}
   - {fileID: 881661343}
   - {fileID: 1828359707}
-  overlay: {fileID: 1121519049}
+  page: {fileID: 1121519049}
   scrollbar: {fileID: 1900710314}
---- !u!114 &139649936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 139649931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Content: {fileID: 0}
-  m_Horizontal: 1
-  m_Vertical: 1
-  m_MovementType: 1
-  m_Elasticity: 0.1
-  m_Inertia: 1
-  m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
-  m_Viewport: {fileID: 0}
-  m_HorizontalScrollbar: {fileID: 0}
-  m_VerticalScrollbar: {fileID: 0}
-  m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 0
-  m_HorizontalScrollbarSpacing: 0
-  m_VerticalScrollbarSpacing: 0
-  m_OnValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &191388065
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,8 +3281,8 @@ MonoBehaviour:
   postTimestamp: {fileID: 566057884}
   postText: {fileID: 285212764}
   postPhoto: {fileID: 835265524}
-  postOverlay: {fileID: 1719516087}
-  userOverlay: {fileID: 139649931}
+  postPage: {fileID: 1719516087}
+  userPage: {fileID: 139649931}
 --- !u!1 &881661341
 GameObject:
   m_ObjectHideFlags: 0
@@ -4333,12 +4301,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1121519050}
-  - component: {fileID: 1121519053}
   - component: {fileID: 1121519051}
+  - component: {fileID: 1121519053}
   - component: {fileID: 1121519052}
   - component: {fileID: 1121519054}
   m_Layer: 5
-  m_Name: Contents
+  m_Name: Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4372,7 +4340,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1121519049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fb97aafe18a94d2089f94195b6c639f, type: 3}
+  m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 1772551585}
@@ -4387,7 +4355,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 1900710314}
   m_HorizontalScrollbarVisibility: 0
-  m_VerticalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 1
   m_HorizontalScrollbarSpacing: 0
   m_VerticalScrollbarSpacing: 0
   m_OnValueChanged:
@@ -4611,8 +4579,8 @@ MonoBehaviour:
   postTimestamp: {fileID: 827421164}
   postText: {fileID: 354082898}
   postPhoto: {fileID: 1493956328}
-  postOverlay: {fileID: 1719516087}
-  userOverlay: {fileID: 0}
+  postPage: {fileID: 1719516087}
+  userPage: {fileID: 139649931}
 --- !u!114 &1146500773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4958,8 +4926,8 @@ MonoBehaviour:
   itemRect: {fileID: 1212057620}
   userAvatar: {fileID: 1855489701}
   alarmText: {fileID: 843534314}
-  userOverlay: {fileID: 139649931}
-  postOverlay: {fileID: 1719516087}
+  postPage: {fileID: 1719516087}
+  userPage: {fileID: 139649931}
 --- !u!114 &1212057624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5738,7 +5706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1485819138
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6520,7 +6488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1646684127
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6835,7 +6803,7 @@ GameObject:
   - component: {fileID: 1719516089}
   - component: {fileID: 1719516091}
   m_Layer: 5
-  m_Name: Post Overlay
+  m_Name: Post Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6932,7 +6900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1730109674
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7238,7 +7206,7 @@ MonoBehaviour:
   itemRect: {fileID: 1798477889}
   userAvatar: {fileID: 2132580199}
   userName: {fileID: 1601208669}
-  userOverlay: {fileID: 139649931}
+  userPage: {fileID: 139649931}
 --- !u!1 &1828359705
 GameObject:
   m_ObjectHideFlags: 0
@@ -7980,7 +7948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1977263253
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8153,7 +8121,7 @@ MonoBehaviour:
   messageText: {fileID: 1611716209}
   userAvatar: {fileID: 2145275842}
   secret: {fileID: 515997818}
-  messageOptionOverlay: {fileID: 1585598058}
+  messageOptionPage: {fileID: 1585598058}
 --- !u!1 &2131826173
 GameObject:
   m_ObjectHideFlags: 0

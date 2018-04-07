@@ -20,7 +20,6 @@ public class ScenarioManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
-
     }
 
     public PlayerProgress playerProgress = new PlayerProgress();
@@ -217,7 +216,7 @@ public class ScenarioManager : MonoBehaviour
     {
         if(type.Equals("Post"))
         {
-            Debug.Log("Post Overlay Event (key: " + key + ")");
+            Debug.Log("Post Page Event (key: " + key + ")");
         }
         else if(type.Equals("Message"))
         {

@@ -12,11 +12,6 @@ public class BadgeController : UIBehaviour
 
     protected override void Awake()
     {
-        for (int i = 0; i < 4; i++)
-        {
-            badge[i].SetActive(false);
-        }
-
         if (instance == null)
             instance = this;
         else if (instance != this)

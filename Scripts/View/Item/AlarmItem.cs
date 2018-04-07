@@ -11,14 +11,14 @@ public class AlarmItem : UIBehaviour, IViewItem
     private AlarmType alarmType;
     private int alarmlinkID;
 
-    public GameObject userOverlay;
-    public GameObject postOverlay;
+    public GameObject postPage;
+    public GameObject userPage;
 
     private float itemPadding = Setting.ItemPadding;
 
     protected override void Awake()
     {
-        this.GetComponent<Button>().onClick.AddListener(() => { OverlayCall(alarmlinkID); });
+        this.GetComponent<Button>().onClick.AddListener(() => { PageCall(alarmlinkID); });
     }
 
     public void OnUpdateItem(int key)
@@ -43,33 +43,33 @@ public class AlarmItem : UIBehaviour, IViewItem
         itemRect.setSize(itemSize);
     }
 
-    public void OverlayCall(int linkID)
+    public void PageCall(int linkID)
     {
         if (alarmType == AlarmType.Post)
         {
-            PostOverlayCall(linkID);
+            PostPageCall(linkID);
         }
         else if (alarmType == AlarmType.Information)
         {
-            UserOverlayCall(linkID);
+            UserPageCall(linkID);
         }
     }
-
-    private void UserOverlayCall(int key)
+    
+    private void PostPageCall(int key)
     {
-        userOverlay.SetActive(true);
+        postPage.SetActive(true);
 
-        var overlay = userOverlay.GetComponent<IViewItem>();
-        if (overlay != null)
-            overlay.OnUpdateItem(key);
+        var page = postPage.GetComponent<IViewItem>();
+        if (page != null)
+            page.OnUpdateItem(key);
     }
 
-    private void PostOverlayCall(int key)
+    private void UserPageCall(int key)
     {
-        postOverlay.SetActive(true);
+        userPage.SetActive(true);
 
-        var overlay = postOverlay.GetComponent<IViewItem>();
-        if (overlay != null)
-            overlay.OnUpdateItem(key);
+        var page = userPage.GetComponent<IViewItem>();
+        if (page != null)
+            page.OnUpdateItem(key);
     }
 }

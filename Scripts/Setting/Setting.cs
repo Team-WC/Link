@@ -45,7 +45,7 @@ public class Setting : MonoBehaviour
     // Item
     public static readonly float ItemPadding = 20f;
     public static readonly Vector2 PostItmeDefaultSize = new Vector2(ScreenSize.x, ItemPadding * 9);
-    public static readonly Vector2 PostOverlayDefaultSize = new Vector2(ScreenSize.x, ScreenSize.y * 0.875f);
+    public static readonly Vector2 PostPageDefaultSize = new Vector2(ScreenSize.x, ScreenSize.y * 0.875f);
 
     public static readonly int PhotoMaxCount = 4;
     public static readonly int InformationMaxCount = 3;

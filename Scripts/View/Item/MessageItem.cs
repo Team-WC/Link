@@ -10,9 +10,9 @@ public class MessageItem : UIBehaviour, IViewItem
     public Text messageText;
     public Image userAvatar;
 
-    public GameObject pw;
+    public RectTransform secret;
 
-    public GameObject messageOptionOverlay;
+    public GameObject messageOptionPage;
 
     private float itemPadding = Setting.ItemPadding;
 
@@ -27,7 +27,7 @@ public class MessageItem : UIBehaviour, IViewItem
         if (message.Options.Count != 2)
         {
             bubbleRect.gameObject.SetActive(true);
-            pw.SetActive(false);
+            secret.gameObject.SetActive(false);
 
             messageText.text = message.Options[0].Text;
 
@@ -54,16 +54,15 @@ public class MessageItem : UIBehaviour, IViewItem
             // 선택지가 있는 경우 호출
             if (message.Options.Count != 1)
             {
-                messageOptionOverlayCall(key);
+                messageOptionPageCall(key);
             }
         }
-        else // Password
+        else // Secret
         {
             bubbleRect.gameObject.SetActive(false);
-            pw.SetActive(true);
+            secret.gameObject.SetActive(true);
 
-            // 중복되는 부분은 위로 빼고
-            // 버튼으로 PW 아이콘 추가
+            itemRect.setSize(new Vector2(itemRect.getSize().x, secret.getSize().y));
         }
 
         // Event Trigger
@@ -73,12 +72,12 @@ public class MessageItem : UIBehaviour, IViewItem
         }
     }
 
-    private void messageOptionOverlayCall(int key)
+    private void messageOptionPageCall(int key)
     {
-        messageOptionOverlay.SetActive(true);
+        messageOptionPage.SetActive(true);
 
-        var overlay = messageOptionOverlay.GetComponent<IViewItem>();
-        if (overlay != null)
-            overlay.OnUpdateItem(key);
+        var page = messageOptionPage.GetComponent<IViewItem>();
+        if (page != null)
+            page.OnUpdateItem(key);
     }
 }

@@ -14,18 +14,18 @@ public class PostItem : UIBehaviour, IViewItem
 
     private int postKey;
     private int userKey;
-    public GameObject postOverlay;
-    public GameObject userOverlay;
+    public GameObject postPage;
+    public GameObject userPage;
 
     // 여백 조절
     private float itemPadding = Setting.ItemPadding;
 
     protected override void Awake()
     {
-        this.GetComponent<Button>().onClick.AddListener(() => { PostOverlayCall(postKey); });
+        this.GetComponent<Button>().onClick.AddListener(() => { PostPageCall(postKey); });
         Button button;
         if (button = userAvatar.GetComponent<Button>())
-            button.onClick.AddListener(() => { UserOverlayCall(userKey); });
+            button.onClick.AddListener(() => { UserPageCall(userKey); });
     }
 
     public void OnUpdateItem(int key)
@@ -76,21 +76,21 @@ public class PostItem : UIBehaviour, IViewItem
         itemRect.setSize(itemSize);
     }
 
-    private void PostOverlayCall(int key)
+    private void PostPageCall(int key)
     {
-        postOverlay.SetActive(true);
+        postPage.SetActive(true);
 
-        var overlay = postOverlay.GetComponent<IViewItem>();
-        if (overlay != null)
-            overlay.OnUpdateItem(key);
+        var page = postPage.GetComponent<IViewItem>();
+        if (page != null)
+            page.OnUpdateItem(key);
     }
 
-    private void UserOverlayCall(int key)
+    private void UserPageCall(int key)
     {
-        userOverlay.SetActive(true);
+        userPage.SetActive(true);
 
-        var overlay = userOverlay.GetComponent<IViewItem>();
-        if (overlay != null)
-            overlay.OnUpdateItem(key);
+        var page = userPage.GetComponent<IViewItem>();
+        if (page != null)
+            page.OnUpdateItem(key);
     }
 }

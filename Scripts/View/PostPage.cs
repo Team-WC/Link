@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PostOverlay : UIBehaviour, IViewItem
+public class PostPage : UIBehaviour, IViewItem
 {
     public Button closeButton;
 
@@ -55,10 +55,10 @@ public class PostOverlay : UIBehaviour, IViewItem
 
         float itemSizeY = (postPhotos[0].rectTransform.getSize().y + Setting.ItemPadding) * post.Photos.Length - baseAnchoredPosition.y;
 
-        if (itemSizeY < Setting.PostOverlayDefaultSize.y)
-            itemSizeY = Setting.PostOverlayDefaultSize.y;
+        if (itemSizeY < Setting.PostPageDefaultSize.y)
+            itemSizeY = Setting.PostPageDefaultSize.y;
 
-        Vector2 itemSize = new Vector2(Setting.PostOverlayDefaultSize.x, itemSizeY);
+        Vector2 itemSize = new Vector2(Setting.PostPageDefaultSize.x, itemSizeY);
 
         contentRect.setSize(itemSize);
 

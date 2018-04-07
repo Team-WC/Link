@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class UserOverlay : UIBehaviour, IViewItem
+public class UserPage : UIBehaviour, IViewItem
 {
     public Button closeButton;
 
@@ -14,7 +14,7 @@ public class UserOverlay : UIBehaviour, IViewItem
     public Image[] informationType;
     public Text[] informationText;
 
-    public GameObject overlay;
+    public GameObject page;
 
     public Scrollbar scrollbar;
     ListViewController listViewController;
@@ -23,7 +23,7 @@ public class UserOverlay : UIBehaviour, IViewItem
 
     protected override void Awake()
     {
-        listViewController = overlay.GetComponent<ListViewController>();
+        listViewController = page.GetComponent<ListViewController>();
         this.gameObject.SetActive(false);
         closeButton.GetComponent<Button>().onClick.AddListener(() => { Close(); });
     }

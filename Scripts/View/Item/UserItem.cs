@@ -10,11 +10,11 @@ public class UserItem : UIBehaviour, IViewItem
     public Text userName;
 
     private int userKey;
-    public GameObject userOverlay;
+    public GameObject userPage;
 
     protected override void Awake()
     {
-        this.GetComponent<Button>().onClick.AddListener(() => { UserOverlayCall(userKey); });
+        this.GetComponent<Button>().onClick.AddListener(() => { UserPageCall(userKey); });
     }
 
     public void OnUpdateItem(int key)
@@ -27,12 +27,12 @@ public class UserItem : UIBehaviour, IViewItem
         this.userName.text = user.Name;
     }
 
-    private void UserOverlayCall(int key)
+    private void UserPageCall(int key)
     {
-        userOverlay.SetActive(true);
+        userPage.SetActive(true);
 
-        var overlay = userOverlay.GetComponent<IViewItem>();
-        if (overlay != null)
-            overlay.OnUpdateItem(key);
+        var page = userPage.GetComponent<IViewItem>();
+        if (page != null)
+            page.OnUpdateItem(key);
     }
 }
