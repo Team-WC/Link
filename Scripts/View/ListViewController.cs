@@ -10,10 +10,14 @@ public class ListViewController : ListView
     protected override float contentSize { get { return this._contentRect.rect.height; } }
     protected override float viewportSize { get { return this._viewportRect.rect.height; } }
 
+    private HorizontalScrollSnap timeline;
+
     protected override void Awake()
     {
         base.Awake();
         this._itemSize = this.itemPrototype.rect.height;
+
+        timeline = GameObject.Find("Timeline").GetComponent<HorizontalScrollSnap>();
     }
 
     public void DisplayItems(int[] keys)
@@ -31,6 +35,24 @@ public class ListViewController : ListView
         InsertItem(key);
         Refresh();
         ScrollTop();
+
+        // Badge control
+        if (string.Equals(gameObject.name, "Posts") && timeline.CurrentPage != 0)
+        {
+            BadgeController.instance.BadgeOn(0);
+        }
+        else if (string.Equals(gameObject.name, "Users") && timeline.CurrentPage != 1)
+        {
+            BadgeController.instance.BadgeOn(1);
+        }
+        else if (string.Equals(gameObject.name, "Alarms") && timeline.CurrentPage != 2)
+        {
+            BadgeController.instance.BadgeOn(2);
+        }
+        else if (string.Equals(gameObject.name, "Messages") && timeline.CurrentPage != 3)
+        {
+            BadgeController.instance.BadgeOn(3);
+        }
     }
 
     public void ListClear()
@@ -43,7 +65,7 @@ public class ListViewController : ListView
         Component[] items = this.gameObject.GetComponentsInChildren<Component>();
         for (int i = 0; i < items.Length; i++)
         {
-            if (items[i].name == "item")
+            if (string.Equals(items[i].name, "item"))
                 Destroy(items[i].gameObject);
         }
 
