@@ -7781,10 +7781,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1c99983e92f4e589f5078815687880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  postsBadge: {fileID: 1730109673}
-  usersBadge: {fileID: 1646684126}
-  alarmsBadge: {fileID: 1977263252}
-  messagesBadge: {fileID: 1485819137}
+  badge:
+  - {fileID: 1730109673}
+  - {fileID: 1646684126}
+  - {fileID: 1977263252}
+  - {fileID: 1485819137}
 --- !u!1 &1959974670
 GameObject:
   m_ObjectHideFlags: 0

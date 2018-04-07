@@ -111,27 +111,6 @@ public class ScrollSnapBase : MonoBehaviour, IBeginDragHandler, IDragHandler, IS
             }
             if ((value != _currentPage && value >= 0 && value < _screensContainer.childCount) || (value == 0 && _screensContainer.childCount == 0))
             {
-                // Badge control
-                if (_currentPage != value)
-                {
-                    if (value == 0 && BadgeController.instance.postsBadge.activeInHierarchy == true)
-                    {
-                        BadgeController.instance.BadgeOff(0);
-                    }
-                    else if (value == 1 && BadgeController.instance.usersBadge.activeInHierarchy == true)
-                    {
-                        BadgeController.instance.BadgeOff(1);
-                    }
-                    else if (value == 2 && BadgeController.instance.alarmsBadge.activeInHierarchy == true)
-                    {
-                        BadgeController.instance.BadgeOff(2);
-                    }
-                    else if (value == 3 && BadgeController.instance.messagesBadge.activeInHierarchy == true)
-                    {
-                        BadgeController.instance.BadgeOff(3);
-                    }
-                }
-
                 _previousPage = _currentPage;
                 _currentPage = value;
                 if (MaskArea) UpdateVisible();
@@ -533,6 +512,12 @@ public class ScrollSnapBase : MonoBehaviour, IBeginDragHandler, IDragHandler, IS
         OnSelectionChangeEndEvent.Invoke(_currentPage);
         _settled = true;
         _moveStarted = false;
+
+        // Badge control
+        if (BadgeController.instance.badge[CurrentPage].activeInHierarchy == true)
+        {
+            BadgeController.instance.BadgeOff(CurrentPage);
+        }
     }
 
     /// <summary>
