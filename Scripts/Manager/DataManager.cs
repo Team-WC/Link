@@ -37,6 +37,7 @@ public class DataManager : MonoBehaviour
     private static Dictionary<int, Post> posts = new Dictionary<int, Post>();
     private static Dictionary<int, Alarm> alarms = new Dictionary<int, Alarm>();
     private static Dictionary<int, Message> messages = new Dictionary<int, Message>();
+    private static Dictionary<int, Secret> secrets = new Dictionary<int, Secret>();
 
     #region GetData
     public User GetUser(string name)
@@ -92,6 +93,16 @@ public class DataManager : MonoBehaviour
         }
     }
     
+    public Secret GetSecret(int key)
+    {
+        if (secrets.ContainsKey(key))
+            return secrets[key];
+        else
+        {
+            NullPrimaryKeyLogError<Secret>(key);
+            return null;
+        }
+    }
 
     #endregion
     

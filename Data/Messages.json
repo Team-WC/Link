@@ -8,6 +8,10 @@
         {
           "text" : "Hello",
           "nextID" : 1
+        },
+        {
+          "text" : "Hello",
+          "nextID" : 1
         }
       ]
     },

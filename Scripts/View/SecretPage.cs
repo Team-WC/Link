@@ -7,6 +7,9 @@ public class SecretPage : UIBehaviour, IViewItem
 {
     public Sprite[] buttonImages;
 
+    public Button closeButton;
+
+    public Image problem;
     public GameObject keyboardObj;
     public GameObject answerSheet4Obj;
     public GameObject answerSheet5Obj;
@@ -17,7 +20,7 @@ public class SecretPage : UIBehaviour, IViewItem
     private int sheetNum;
 
     private int[] answer;
-    private int[] problemKeys;
+    private int[] buttonKeys;
 
     private int[] select;
 
@@ -26,14 +29,15 @@ public class SecretPage : UIBehaviour, IViewItem
         this.gameObject.SetActive(false);
 
         button = keyboardObj.GetComponentsInChildren<Image>();
+        closeButton.GetComponent<Button>().onClick.AddListener(() => { Close(); });
     }
 
     public void OnUpdateItem(int key)
     {
-        // key는 문제 번호
-        // 임시 문제
-        problemKeys = new int[] { 11, 1, 2, 3, 5, 4, 7, 8, 9, 10, 0, 6 };
-        answer = new int[] { 1, 2, 3, 4 };
+        Secret secret = DataManager.instance.GetSecret(key);
+        buttonKeys = secret.ButtonKeys;
+        answer = secret.Answer;
+        problem.sprite = secret.Problem;
 
         sheetNum = 0;
         if (answer.Length == 4)
@@ -61,7 +65,7 @@ public class SecretPage : UIBehaviour, IViewItem
             select = new int[6];
         }
 
-        OnUpdateKeyboard(problemKeys);
+        OnUpdateKeyboard(buttonKeys);
     }
 
     public void OnClickButton(int key)
@@ -70,7 +74,7 @@ public class SecretPage : UIBehaviour, IViewItem
         {
             if (sheet[i].sprite == null)
             {
-                sheet[i].sprite = buttonImages[problemKeys[key]];
+                sheet[i].sprite = buttonImages[buttonKeys[key]];
                 break;
             }
         }
@@ -94,16 +98,16 @@ public class SecretPage : UIBehaviour, IViewItem
             if (answer[i] != select[i])
             {
                 Debug.Log("오답");
+                ClearAnswerSheet();
                 break;
             }
 
             if (i == answer.Length - 1)
             {
                 Debug.Log("정답");
+                this.gameObject.SetActive(false);
             }
         }
-
-        ClearAnswerSheet();
     }
 
     public void OnUpdateKeyboard(int[] problemKeys)
@@ -120,5 +124,10 @@ public class SecretPage : UIBehaviour, IViewItem
         {
             sheet[i].sprite = null;
         }
+    }
+
+    private void Close()
+    {
+        this.gameObject.SetActive(false);
     }
 }

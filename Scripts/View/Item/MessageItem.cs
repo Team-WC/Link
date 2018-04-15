@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MessageItem : UIBehaviour, IViewItem
 {
@@ -11,6 +12,7 @@ public class MessageItem : UIBehaviour, IViewItem
     public Image userAvatar;
 
     public RectTransform secret;
+    public Sprite unlock;
 
     public GameObject messageOptionPage;
     public GameObject secretPage;
@@ -94,5 +96,23 @@ public class MessageItem : UIBehaviour, IViewItem
         var page = secretPage.GetComponent<IViewItem>();
         if (page != null)
             page.OnUpdateItem(key);
+
+        StartCoroutine(SecretPageCheck(key));
+    }
+
+    public IEnumerator SecretPageCheck(int key)
+    {
+        while (true)
+        {
+            Debug.Log(1);
+            if (DataManager.instance.GetSecret(key).Solve)
+            {
+                secret.GetComponent<Image>().sprite = unlock;
+                secret.GetComponent<Button>().enabled = false;
+                break;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }
