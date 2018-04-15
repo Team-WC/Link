@@ -187,12 +187,17 @@ public class ScenarioManager : MonoBehaviour
             playerProgress.AddMessageKey(currentID);
             messagesView.DisplayItem(currentID);
 
-            // 선택지가 없는 경우
+            // count = 1, 선택지 없음
             if (message.Options.Count == 1)
             {
                 messageOptionNumber = 0;
             }
-            // 선택지가 있는 경우
+            // count = 2, 시크릿 페이지 호출
+            else if(message.Options.Count == 2)
+            {
+                Debug.Log("Secret page button");
+            }
+            // count = 3, 선택지 있음
             else if(message.Options.Count == 3)
             {
                 messageOptionNumber = -1;
@@ -203,7 +208,7 @@ public class ScenarioManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("선택지 개수 초과: " + message.Options.Count);
+                Debug.LogError("선택지 설정 오류: " + message.Options.Count);
             }
 
             currentID = message.Options[messageOptionNumber].NextID;

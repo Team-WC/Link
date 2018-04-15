@@ -13,8 +13,14 @@ public class MessageItem : UIBehaviour, IViewItem
     public RectTransform secret;
 
     public GameObject messageOptionPage;
+    public GameObject secretPage;
 
     private float itemPadding = Setting.ItemPadding;
+
+    protected override void Awake()
+    {
+        secret.GetComponent<Button>().onClick.AddListener(() => { SecretPageCall(0); });
+    }
 
     public void OnUpdateItem(int key)
     {
@@ -54,7 +60,7 @@ public class MessageItem : UIBehaviour, IViewItem
             // 선택지가 있는 경우 호출
             if (message.Options.Count != 1)
             {
-                messageOptionPageCall(key);
+                MessageOptionPageCall(key);
             }
         }
         else // Secret
@@ -72,11 +78,20 @@ public class MessageItem : UIBehaviour, IViewItem
         }
     }
 
-    private void messageOptionPageCall(int key)
+    private void MessageOptionPageCall(int key)
     {
         messageOptionPage.SetActive(true);
 
         var page = messageOptionPage.GetComponent<IViewItem>();
+        if (page != null)
+            page.OnUpdateItem(key);
+    }
+
+    public void SecretPageCall(int key)
+    {
+        secretPage.SetActive(true);
+
+        var page = secretPage.GetComponent<IViewItem>();
         if (page != null)
             page.OnUpdateItem(key);
     }
