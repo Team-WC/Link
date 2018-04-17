@@ -14,6 +14,9 @@ public class Setting : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+
+        // 안드로이드 상단바 표시
+        ApplicationChrome.statusBarState = ApplicationChrome.States.Visible;
     }
     // View Setting
     // AP: anchoredPosition
@@ -22,9 +25,6 @@ public class Setting : MonoBehaviour
     // pivot (0.5, 0.5)
     public static readonly Vector2 AspectRatio = new Vector2(9, 16);
     public static readonly Vector2 ScreenSize = new Vector2(AspectRatio.x * 80, AspectRatio.y * 80); // 720x1280
-
-    public static readonly Vector2 StatusBarSize = new Vector2(ScreenSize.x, ScreenSize.y * 0.0375f);
-    public static readonly Vector2 StatusBarAP = new Vector2(0, 616);
 
     // Navigation Bar
     public static readonly Vector2 NavigationBarSize = new Vector2(ScreenSize.x, ScreenSize.y * 0.1625f);

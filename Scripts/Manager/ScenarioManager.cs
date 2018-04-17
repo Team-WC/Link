@@ -19,10 +19,8 @@ public class ScenarioManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
 
-        // 안드로이드 상단바 표시
-        ApplicationChrome.statusBarState = ApplicationChrome.States.Visible;
+        DontDestroyOnLoad(gameObject);
     }
 
     public PlayerProgress playerProgress = new PlayerProgress();
@@ -42,26 +40,26 @@ public class ScenarioManager : MonoBehaviour
 
             if (test == 1)
             {
-                AddUsers(new int[] { 0, 1});
-                AddPosts(new int[] { 0, 1});
+                AddUsers(new int[] { 0, 1 });
+                AddPosts(new int[] { 0, 1 });
                 AddAlarm(0);
                 AddMessageAuto(1);
             }
             else if (test == 2)
             {
-                
+
             }
             else if (test == 3)
             {
-               
+
             }
             else if (test == 4)
             {
-              
+
             }
             else if (test == 5)
             {
-               
+
             }
             else if (test == 6)
             {
@@ -196,12 +194,12 @@ public class ScenarioManager : MonoBehaviour
                 messageOptionNumber = 0;
             }
             // count = 2, 시크릿 페이지 호출
-            else if(message.Options.Count == 2)
+            else if (message.Options.Count == 2)
             {
                 Debug.Log("Secret page button");
             }
             // count = 3, 선택지 있음
-            else if(message.Options.Count == 3)
+            else if (message.Options.Count == 3)
             {
                 messageOptionNumber = -1;
                 while (messageOptionNumber == -1)
@@ -222,15 +220,15 @@ public class ScenarioManager : MonoBehaviour
 
     public void TriggerCheck(string type, int key)
     {
-        if(type.Equals("Post"))
+        if (type.Equals("Post"))
         {
             Debug.Log("Post Page Event (key: " + key + ")");
         }
-        else if(type.Equals("Message"))
+        else if (type.Equals("Message"))
         {
             Debug.Log("Message Event (key: " + key + ")");
         }
-        else if(type.Equals("Password"))
+        else if (type.Equals("Password"))
         {
             Debug.Log("Password Event (key: " + key + ")");
         }
