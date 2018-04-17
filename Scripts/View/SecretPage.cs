@@ -83,13 +83,13 @@ public class SecretPage : UIBehaviour, IViewItem
 
         if (sheetNum == sheet.Length)
         {
-            StartCoroutine(AnswerCheck());
+            StartCoroutine(AnswerCheck(key));
 
             sheetNum = 0;
         }
     }
 
-    public IEnumerator AnswerCheck()
+    public IEnumerator AnswerCheck(int key)
     {
         yield return new WaitForSeconds(0.5f);
 
@@ -105,6 +105,7 @@ public class SecretPage : UIBehaviour, IViewItem
             if (i == answer.Length - 1)
             {
                 Debug.Log("정답");
+                DataManager.instance.GetSecret(key).Solve = true;
                 this.gameObject.SetActive(false);
             }
         }
