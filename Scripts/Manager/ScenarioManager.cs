@@ -20,6 +20,9 @@ public class ScenarioManager : MonoBehaviour
         else if (instance != this)
             Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+
+        // 안드로이드 상단바 표시
+        ApplicationChrome.statusBarState = ApplicationChrome.States.Visible;
     }
 
     public PlayerProgress playerProgress = new PlayerProgress();
