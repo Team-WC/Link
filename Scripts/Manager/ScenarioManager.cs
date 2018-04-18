@@ -29,6 +29,14 @@ public class ScenarioManager : MonoBehaviour
     public ListViewController alarmsView;
     public ListViewController messagesView;
 
+    void Start()
+    {
+        if (playerProgress.intro == true)
+        {
+            GameObject.Find("Intro").SetActive(false);
+        }
+    }
+
     #region Test
     private int test = 0;
     public int Test
@@ -190,12 +198,11 @@ public class ScenarioManager : MonoBehaviour
             messagesView.DisplayItem(currentID);
 
             messageOptionNumber = 0;
-            
+
             // count = 1, 선택지 없음
             if (message.Options.Count == 1)
             {
                 Debug.Log("Normal Message: " + message.PrimaryKey.ToString());
-                //messageOptionNumber = 0;
             }
             // count = 2, 시크릿 페이지 호출
             else if (message.Options.Count == 2)

@@ -4,7 +4,8 @@ using UnityEngine;
 using System;
 using Newtonsoft.Json;
 
-public struct Progress {
+public struct Progress
+{
     public int stage;
     public int phase;
 
@@ -31,11 +32,14 @@ public class PlayerProgress
     private List<int> messagesList;
     [JsonProperty]
     private int messageCurrentID = 0;
+    [JsonProperty]
+    public bool intro = false;
 
-    public Progress Progress {
-        get { return progress;}
+    public Progress Progress
+    {
+        get { return progress; }
     }
-    
+
     public List<int> UsersList
     {
         get { return new List<int>(usersList); }
