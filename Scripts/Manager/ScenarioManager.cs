@@ -43,10 +43,11 @@ public class ScenarioManager : MonoBehaviour
                 AddUsers(new int[] { 0, 1 });
                 AddPosts(new int[] { 0, 1 });
                 AddAlarm(0);
-                AddMessageAuto(1);
+                AddMessageAuto(3);
             }
             else if (test == 2)
             {
+                AddMessageAuto(5);
 
             }
             else if (test == 3)
@@ -174,7 +175,7 @@ public class ScenarioManager : MonoBehaviour
     {
         int currentID = playerProgress.MessageCurrentID;
 
-        while (currentID != destinationID)
+        while (currentID <= destinationID)
         {
             if (currentID > destinationID)
             {
@@ -188,15 +189,18 @@ public class ScenarioManager : MonoBehaviour
             playerProgress.AddMessageKey(currentID);
             messagesView.DisplayItem(currentID);
 
+            messageOptionNumber = 0;
+            
             // count = 1, 선택지 없음
             if (message.Options.Count == 1)
             {
-                messageOptionNumber = 0;
+                Debug.Log("Normal Message: " + message.PrimaryKey.ToString());
+                //messageOptionNumber = 0;
             }
             // count = 2, 시크릿 페이지 호출
             else if (message.Options.Count == 2)
             {
-                Debug.Log("Secret page button");
+                Debug.Log("Secret message : " + message.PrimaryKey.ToString());
             }
             // count = 3, 선택지 있음
             else if (message.Options.Count == 3)
@@ -215,6 +219,7 @@ public class ScenarioManager : MonoBehaviour
             currentID = message.Options[messageOptionNumber].NextID;
         }
 
+        //current ID가 next를 미리 가르키고 있음 정상 작동은 하는데 current ID랑 의미가 맞는지 확인 필요 
         playerProgress.MessageCurrentID = currentID;
     }
 

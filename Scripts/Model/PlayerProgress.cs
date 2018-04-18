@@ -30,7 +30,7 @@ public class PlayerProgress
     [JsonProperty]
     private List<int> messagesList;
     [JsonProperty]
-    private int messageCurrentID;
+    private int messageCurrentID = 0;
 
     public Progress Progress {
         get { return progress;}

@@ -2,16 +2,12 @@
   "messages": [
     {
       "primaryKey" : 0,
-      "userID" : 0,
+      "userID" : 1,
       "trigger" : true,
       "options" : [
         {
           "text" : "Hello",
-          "nextID" : 1
-        },
-        {
-          "text" : "Hello",
-          "nextID" : 1
+          "nextID" : 2
         }
       ]
     },
@@ -21,7 +17,7 @@
       "trigger" : false,
       "options" : [
         {
-          "text" : "option1",
+          "text" : "2",
           "nextID" : 2
         },
         {
@@ -29,6 +25,59 @@
           "nextID" : 2
         }
       ]
+    },
+    {
+      "primaryKey" : 2,
+      "userID" : 1,
+      "trigger" : false,
+      "options" : [
+        {
+          "text" : "Select!",
+          "nextID" : 3
+        },
+        {
+          "text" : "option1",
+          "nextID" : 3
+        },
+        {
+          "text" : "option2",
+          "nextID" : 3
+        }
+      ]
+    },
+    {
+      "primaryKey" : 3,
+      "userID" : 0,
+      "trigger" : false,
+      "options" : [
+        {
+          "text" : "End",
+          "nextID" : 4
+        }
+      ]
+    },
+    {
+      "primaryKey" : 4,
+      "userID" : 0,
+      "trigger" : false,
+      "options" : [
+        {
+          "text" : "4",
+          "nextID" : 5
+        }
+      ]
+    },
+    {
+      "primaryKey" : 5,
+      "userID" : 0,
+      "trigger" : false,
+      "options" : [
+        {
+          "text" : "5",
+          "nextID" : 6
+        }
+      ]
     }
+    
   ]
 }

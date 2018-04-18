@@ -31,6 +31,13 @@ public class Message : Data
     public Message(int userID, List<MessageOption> options, int primaryKey, bool trigger) : base(primaryKey)
     {
         this.userID = userID;
+        foreach (MessageOption option in options)
+        {
+            if (this.PrimaryKey >= option.NextID)
+            {
+                Debug.LogError("Message Next ID 는 메세지 key 보다 더 커야됩니다. (" + primaryKey.ToString() + ")");
+            }
+        }
         this.options = options;
         this.trigger = trigger;
     }

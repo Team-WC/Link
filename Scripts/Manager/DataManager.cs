@@ -319,25 +319,6 @@ public class DataManager : MonoBehaviour
     }
 
     #endregion
-    /*private void AddStage(StageData data)
-    {
-        foreach (User user in data.Users)
-        {
-            AddUser(user);
-        }
-        foreach (Post post in data.Posts)
-        {
-            AddPost(post);
-        }
-        foreach (Alarm alarm in data.Alarms)
-        {
-            AddAlarm(alarm);
-        }
-        foreach (Message message in data.Messages)
-        {
-            AddMessage(message);
-        }
-    }*/
 
     private void DuplicatePrimaryKeyLogError<T>(int key)
     {
