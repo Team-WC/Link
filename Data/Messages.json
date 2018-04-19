@@ -33,7 +33,7 @@
       "options" : [
         {
           "text" : "Select!",
-          "nextID" : -1
+          "nextID" : 1000
         },
         {
           "text" : "option1",
