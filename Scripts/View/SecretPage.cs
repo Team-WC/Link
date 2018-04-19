@@ -36,7 +36,7 @@ public class SecretPage : UIBehaviour, IViewItem
     {
         Secret secret = DataManager.instance.GetSecret(key);
         buttonKeys = secret.ButtonKeys;
-        answer = secret.Answer;
+        answer = secret.Answers;
         problem.sprite = secret.Problem;
 
         sheetNum = 0;

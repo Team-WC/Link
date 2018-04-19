@@ -31,6 +31,7 @@ public class DataManager : MonoBehaviour
         LoadUsers();
         LoadAlarms();
         LoadMessages();
+        LoadSecrets();
     }
 
     private static Dictionary<int, User> users = new Dictionary<int, User>();
@@ -275,6 +276,57 @@ public class DataManager : MonoBehaviour
         }
     }
 
+    public void LoadSecrets(){
+        string filePath = Setting.Secrets_filepath;
+        try
+        {
+            if (File.Exists(filePath))
+            {
+                string dataAsJson = File.ReadAllText(filePath);
+                Dictionary<string, object> data = JsonConvert.DeserializeObject<Dictionary<string, object>>(dataAsJson);
+                Debug.Log(dataAsJson);
+                foreach (var secret in (JArray) data["secrets"])
+                {
+                    int primaryKey = Convert.ToInt32(secret["primaryKey"]);
+                    string problem_path = Path.Combine(Application.dataPath,
+                        "Resources/Problem_Images/" + Convert.ToString(secret["problem"]));
+                    Sprite problem = IMG2Sprite.LoadNewSprite(problem_path);
+
+                    int[] buttonKeys = new int[12];
+                    List<int> answers = new List<int>();
+                
+                    JArray buttonKeysJ = (JArray)secret["buttonKeys"];
+                    for(int i=0; i < 12; i++)
+                    {
+                        buttonKeys[i] = Convert.ToInt32(buttonKeysJ[i]);
+                    }
+
+                    foreach(int answer in secret["answers"])
+                    {
+                        answers.Add(answer);
+                    }
+
+                    AddSecret(new Secret(primaryKey, problem, buttonKeys, answers.ToArray()));
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException();
+            }
+        }
+        catch (KeyNotFoundException e)
+        {
+            Debug.LogError(e.ToString());
+        }
+        catch (FileNotFoundException e)
+        {
+            Debug.LogError(e.ToString());
+        }
+        catch (IndexOutOfRangeException e)
+        {
+            Debug.LogError(e.ToString());
+        }
+    }
     #endregion
 
     #region AddData
@@ -316,6 +368,17 @@ public class DataManager : MonoBehaviour
         {
             DuplicatePrimaryKeyLogError<Message>(message.PrimaryKey);
         }
+    }
+
+    private void AddSecret(Secret secret)
+    {
+        if (!(secrets.ContainsKey(secret.PrimaryKey)))
+            secrets.Add(secret.PrimaryKey, secret);
+        else
+        {
+            DuplicatePrimaryKeyLogError<Secret>(secret.PrimaryKey);
+        }
+
     }
 
     #endregion

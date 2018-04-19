@@ -7,7 +7,7 @@
       "options" : [
         {
           "text" : "Hello",
-          "nextID" : 2
+          "nextID" : 1
         }
       ]
     },
@@ -17,11 +17,11 @@
       "trigger" : false,
       "options" : [
         {
-          "text" : "2",
+          "text" : "next message key",
           "nextID" : 2
         },
         {
-          "text" : "option2",
+          "text" : "secret key",
           "nextID" : 2
         }
       ]
@@ -33,7 +33,7 @@
       "options" : [
         {
           "text" : "Select!",
-          "nextID" : 3
+          "nextID" : -1
         },
         {
           "text" : "option1",
