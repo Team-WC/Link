@@ -13,7 +13,11 @@ public class User : Data
     [SerializeField]
     private Information[] informations;
 
-    public string Name { get { return name; } set { name = value; } }
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
 
     public Sprite Avatar
     {

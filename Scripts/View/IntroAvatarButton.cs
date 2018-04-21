@@ -29,7 +29,7 @@ public class IntroAvatarButton : UIBehaviour
             if (i == num)
             {
                 avatarButton[i].colors = pColor;
-                introController.playerAvatarNumber = num;
+                introController.playerAvatar = avatarButton[num].GetComponent<Image>().sprite;
             }
             else
             {

@@ -7,8 +7,8 @@ public class IntroController : UIBehaviour
     public GameObject[] introPage;
     public int currentPage = 0;
 
-    public int playerAvatarNumber = 0;
-    public string playerName = "Player";
+    public Sprite playerAvatar;
+    public string playerName = "       ";
     public InputField inputField;
 
     protected override void Start()
@@ -35,9 +35,11 @@ public class IntroController : UIBehaviour
         ScenarioManager.instance.playerProgress.intro = true;
 
         playerName = inputField.text;
+        if (playerName.Equals(""))
+            playerName = "       ";
 
-        // user avatar, user name  
-        Debug.Log(playerAvatarNumber + " " + playerName);
+        // user avatar, user name
+        DataManager.instance.SetUser(0, playerName, playerAvatar);
 
         this.gameObject.SetActive(false);
     }
