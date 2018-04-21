@@ -40,7 +40,6 @@ public class Secret : Data
         set { solve = value; }
     }
 
-    // 생성자
     public Secret(int primaryKey, Sprite problem, int[] buttonKeys, int[] answer) : base(primaryKey)
     {
         this.problem = problem;

@@ -300,7 +300,7 @@ public class DataManager : MonoBehaviour
                     Sprite problem = IMG2Sprite.LoadNewSprite(problem_path);
 
                     int[] buttonKeys = new int[12];
-                    List<int> answers = new List<int>();
+                    List<int> answer = new List<int>();
                 
                     JArray buttonKeysJ = (JArray)secret["buttonKeys"];
                     for(int i=0; i < 12; i++)
@@ -308,12 +308,12 @@ public class DataManager : MonoBehaviour
                         buttonKeys[i] = Convert.ToInt32(buttonKeysJ[i]);
                     }
 
-                    foreach(int answer in secret["answers"])
+                    foreach(int answerNum in secret["answer"])
                     {
-                        answers.Add(answer);
+                        answer.Add(answerNum);
                     }
 
-                    AddSecret(new Secret(primaryKey, problem, buttonKeys, answers.ToArray()));
+                    AddSecret(new Secret(primaryKey, problem, buttonKeys, answer.ToArray()));
                 }
             }
             else
