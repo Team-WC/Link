@@ -24,6 +24,8 @@ public class SecretPage : UIBehaviour, IViewItem
 
     private int[] select;
 
+    private int secretKey;
+
     protected override void Awake()
     {
         this.gameObject.SetActive(false);
@@ -34,6 +36,7 @@ public class SecretPage : UIBehaviour, IViewItem
 
     public void OnUpdateItem(int key)
     {
+        secretKey = key;
         Secret secret = DataManager.instance.GetSecret(key);
         buttonKeys = secret.ButtonKeys;
         answer = secret.Answer;
@@ -68,22 +71,23 @@ public class SecretPage : UIBehaviour, IViewItem
         OnUpdateKeyboard(buttonKeys);
     }
 
-    public void OnClickButton(int key)
+    public void OnClickButton(int num)
     {
         for (int i = 0; i < sheet.Length; i++)
         {
             if (sheet[i].sprite == null)
             {
-                sheet[i].sprite = buttonImages[buttonKeys[key]];
+                sheet[i].sprite = buttonImages[buttonKeys[num]];
                 break;
             }
         }
-        select[sheetNum] = key;
+        select[sheetNum] = num;
         sheetNum++;
 
         if (sheetNum == sheet.Length)
         {
-            StartCoroutine(AnswerCheck(key));
+            // 키 수정
+            StartCoroutine(AnswerCheck(secretKey));
 
             sheetNum = 0;
         }
