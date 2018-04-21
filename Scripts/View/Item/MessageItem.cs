@@ -13,6 +13,7 @@ public class MessageItem : UIBehaviour, IViewItem
 
     public RectTransform secret;
     public Sprite unlock;
+    private int secretKey;
 
     public GameObject messageOptionPage;
     public GameObject secretPage;
@@ -21,7 +22,7 @@ public class MessageItem : UIBehaviour, IViewItem
 
     protected override void Awake()
     {
-        secret.GetComponent<Button>().onClick.AddListener(() => { SecretPageCall(0); });
+        secret.GetComponent<Button>().onClick.AddListener(() => { SecretPageCall(secretKey); });
     }
 
     public void OnUpdateItem(int key)
@@ -70,6 +71,9 @@ public class MessageItem : UIBehaviour, IViewItem
             bubbleRect.gameObject.SetActive(false);
             secret.gameObject.SetActive(true);
 
+            Debug.Log(message.Options[1].Text + " " + message.Options[1].NextID);
+            secretKey = message.Options[1].NextID;
+
             itemRect.setSize(new Vector2(itemRect.getSize().x, secret.getSize().y));
         }
 
@@ -97,14 +101,13 @@ public class MessageItem : UIBehaviour, IViewItem
         if (page != null)
             page.OnUpdateItem(key);
 
-        StartCoroutine(SecretPageCheck(key));
+        StartCoroutine(SecretImageCheck(key));
     }
 
-    public IEnumerator SecretPageCheck(int key)
+    public IEnumerator SecretImageCheck(int key)
     {
         while (true)
         {
-            Debug.Log(1);
             if (DataManager.instance.GetSecret(key).Solve)
             {
                 secret.GetComponent<Image>().sprite = unlock;

@@ -2666,7 +2666,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 366714448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19ed97a0ba5f44a7ca54f9a670ff53a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 55b08260b00a44d15aa6eaef35e27fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &377220247
@@ -7001,7 +7001,7 @@ MonoBehaviour:
   - {fileID: 278111773}
   - {fileID: 380942045}
   currentPage: 0
-  playerAvatarNumber: 0
+  playerAvatar: {fileID: 0}
   playerName: Player
   inputField: {fileID: 0}
 --- !u!1 &1026082964

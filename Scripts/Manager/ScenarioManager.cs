@@ -240,7 +240,7 @@ public class ScenarioManager : MonoBehaviour
         {
             Debug.Log("Message Event (key: " + key + ")");
         }
-        else if (type.Equals("Password"))
+        else if (type.Equals("Secret"))
         {
             Debug.Log("Password Event (key: " + key + ")");
         }

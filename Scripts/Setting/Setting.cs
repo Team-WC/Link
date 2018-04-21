@@ -61,4 +61,7 @@ public class Setting : MonoBehaviour
 
     public static string Messages_filepath
     {get {return Path.Combine(Application.dataPath, "Data/Messages.json");}}
+
+    public static string Secrets_filepath
+    {get {return Path.Combine(Application.dataPath, "Data/Secrets.json");}}
 }

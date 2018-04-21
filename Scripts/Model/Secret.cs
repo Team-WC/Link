@@ -41,8 +41,21 @@ public class Secret : Data
     }
 
     // 생성자
-    public Secret()
+    public Secret(int primaryKey, Sprite problem, int[] buttonKeys, int[] answer) : base(primaryKey)
     {
+        this.problem = problem;
+
+        if (buttonKeys.Length != 12)
+            Debug.LogError("buttonsKeys의 개수 설정 오류");
+        else
+            this.buttonKeys = buttonKeys;
+
+        if (answer.Length < 4 || answer.Length > 6)
+            Debug.LogError("answer의 길이 설정 오류");
+        else
+            this.answer = answer;
+
+        solve = false;
 
     }
 }
