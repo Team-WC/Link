@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System;
 using UnityEngine;
 using UnityEngine.Networking.NetworkSystem;
 using Debug = UnityEngine.Debug;
@@ -37,6 +38,7 @@ public class ScenarioManager : MonoBehaviour
         }
     }
 
+    /*
     #region Test
     private int test = 0;
     public int Test
@@ -86,6 +88,7 @@ public class ScenarioManager : MonoBehaviour
         }
     }
     #endregion
+    */
 
     public static string ProgressFilePath
     {
@@ -123,7 +126,7 @@ public class ScenarioManager : MonoBehaviour
         postsView.DisplayItems(playerProgress.PostsList.ToArray());
         usersView.DisplayItems(playerProgress.UsersList.ToArray());
         alarmsView.DisplayItems(playerProgress.AlarmsList.ToArray());
-        // 메시지 추가 필요
+        messagesView.DisplayItems(playerProgress.MessagesList.ToArray());
     }
 
     public void AddPosts(int[] keys)
@@ -205,17 +208,13 @@ public class ScenarioManager : MonoBehaviour
                 Debug.Log("Normal Message: " + message.PrimaryKey.ToString());
             }
             // count = 2, 시크릿 페이지 호출
-            else if (message.Options.Count == 2)
-            {
-                Debug.Log("Secret message : " + message.PrimaryKey.ToString());
-            }
             // count = 3, 선택지 있음
-            else if (message.Options.Count == 3)
+            else if (message.Options.Count == 2 || message.Options.Count == 3)
             {
                 messageOptionNumber = -1;
                 while (messageOptionNumber == -1)
                 {
-                    yield return new WaitForSeconds(0.1f);
+                    yield return new WaitForSeconds(0.2f);
                 }
             }
             else
@@ -230,23 +229,54 @@ public class ScenarioManager : MonoBehaviour
         playerProgress.MessageCurrentID = currentID;
     }
 
-    public void TriggerCheck(string type, int key)
+    public void MainTrigger(int stage)
     {
-        if (type.Equals("Post"))
+        ScenarioManager.instance.playerProgress.Stage = stage;
+        if (stage == 0)
         {
-            Debug.Log("Post Page Event (key: " + key + ")");
+            // 초기 뷰 설정
+            AddMessageAuto(5);
         }
-        else if (type.Equals("Message"))
+        else if (stage == 1)
         {
-            Debug.Log("Message Event (key: " + key + ")");
-        }
-        else if (type.Equals("Secret"))
-        {
-            Debug.Log("Password Event (key: " + key + ")");
+
         }
         else
         {
-            Debug.LogError("Trigger type input error: " + type);
+            Debug.LogError("MainTrigger stage 변수 오류");
         }
+    }
+
+    public void SubTrigger<T>(int key)
+    {
+        if (ScenarioManager.instance.playerProgress.Stage == 0)
+        {
+            SubTriggerStage0<T>(key);
+        }
+        else if (ScenarioManager.instance.playerProgress.Stage == 1)
+        {
+            SubTriggerStage1<T>(key);
+        }
+    }
+
+    public void SubTriggerStage0<T>(int key)
+    {
+        // type: Message, Post
+        /* 트리거 예제
+        if(typeof(T).Name.Equals(typeof(Message).Name) && key == 0)
+        {
+            // post view 호출
+        }
+        */
+
+        //else
+        {
+            Debug.LogError("Event Trigger 설정 오류");
+        }
+    }
+
+    public void SubTriggerStage1<T>(int key)
+    {
+
     }
 }

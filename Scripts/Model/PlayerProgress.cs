@@ -21,6 +21,8 @@ public class PlayerProgress
     [JsonProperty]
     private Progress progress;
     [JsonProperty]
+    private int stage = 0;
+    [JsonProperty]
     private List<int> usersList;
     [JsonProperty]
     public Dictionary<int, List<int>> userPost;
@@ -38,6 +40,12 @@ public class PlayerProgress
     public Progress Progress
     {
         get { return progress; }
+    }
+
+    public int Stage
+    {
+        get { return stage; }
+        set { stage = value; }
     }
 
     public List<int> UsersList

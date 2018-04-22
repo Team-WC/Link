@@ -41,6 +41,9 @@ public class IntroController : UIBehaviour
         // user avatar, user name
         DataManager.instance.SetUser(0, playerName, playerAvatar);
 
+        // stage 0
+        ScenarioManager.instance.MainTrigger(0);
+
         this.gameObject.SetActive(false);
     }
 

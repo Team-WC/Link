@@ -110,6 +110,7 @@ public class SecretPage : UIBehaviour, IViewItem
             {
                 Debug.Log("정답");
                 DataManager.instance.GetSecret(key).Solve = true;
+                ScenarioManager.instance.messageOptionNumber = 0;
                 this.gameObject.SetActive(false);
             }
         }

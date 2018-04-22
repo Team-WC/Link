@@ -65,7 +65,7 @@ public class PostPage : UIBehaviour, IViewItem
         // Event Trigger
         if(post.Trigger)
         {
-            ScenarioManager.instance.TriggerCheck("Post", key);
+            ScenarioManager.instance.SubTrigger<Post>(key);
         }
     }
 

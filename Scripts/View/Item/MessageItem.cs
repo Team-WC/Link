@@ -80,7 +80,7 @@ public class MessageItem : UIBehaviour, IViewItem
         // Event Trigger
         if (message.Trigger)
         {
-            ScenarioManager.instance.TriggerCheck("Message", key);
+            ScenarioManager.instance.SubTrigger<Message>(key);
         }
     }
 
@@ -115,7 +115,7 @@ public class MessageItem : UIBehaviour, IViewItem
                 break;
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }
