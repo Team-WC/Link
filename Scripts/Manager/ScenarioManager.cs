@@ -14,6 +14,14 @@ public class ScenarioManager : MonoBehaviour
     public static ScenarioManager instance = null;
     public int messageOptionNumber = -1;
 
+    
+
+    public PlayerProgress playerProgress = new PlayerProgress();
+    public ListViewController postsView;
+    public ListViewController usersView;
+    public ListViewController alarmsView;
+    public ListViewController messagesView;
+
     void Awake()
     {
         if (instance == null)
@@ -24,12 +32,6 @@ public class ScenarioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public PlayerProgress playerProgress = new PlayerProgress();
-    public ListViewController postsView;
-    public ListViewController usersView;
-    public ListViewController alarmsView;
-    public ListViewController messagesView;
-
     void Start()
     {
         if (playerProgress.intro == true)
@@ -37,59 +39,15 @@ public class ScenarioManager : MonoBehaviour
             GameObject.Find("Intro").SetActive(false);
         }
     }
-
-    /*
-    #region Test
-    private int test = 0;
-    public int Test
+    public void LoadView()
     {
-        get { return test; }
-        set
-        {
-            test = value;
-
-            if (test == 1)
-            {
-                AddUsers(new int[] { 0, 1 });
-                AddPosts(new int[] { 0, 1 });
-                AddAlarm(0);
-                AddMessageAuto(3);
-            }
-            else if (test == 2)
-            {
-                AddMessageAuto(5);
-
-            }
-            else if (test == 3)
-            {
-
-            }
-            else if (test == 4)
-            {
-
-            }
-            else if (test == 5)
-            {
-
-            }
-            else if (test == 6)
-            {
-            }
-            Canvas.ForceUpdateCanvases();
-        }
+        postsView.DisplayItems(playerProgress.PostsList.ToArray());
+        usersView.DisplayItems(playerProgress.UsersList.ToArray());
+        alarmsView.DisplayItems(playerProgress.AlarmsList.ToArray());
+        messagesView.DisplayItems(playerProgress.MessagesList.ToArray());
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Test++;
-            Debug.Log("test num: " + Test);
-        }
-    }
-    #endregion
-    */
-
+    #region PlayerProgress
     public static string ProgressFilePath
     {
         get
@@ -121,13 +79,9 @@ public class ScenarioManager : MonoBehaviour
         File.WriteAllText(ProgressFilePath, dataAsJson);
     }
 
-    public void LoadView()
-    {
-        postsView.DisplayItems(playerProgress.PostsList.ToArray());
-        usersView.DisplayItems(playerProgress.UsersList.ToArray());
-        alarmsView.DisplayItems(playerProgress.AlarmsList.ToArray());
-        messagesView.DisplayItems(playerProgress.MessagesList.ToArray());
-    }
+    #endregion
+
+    #region Add
 
     public void AddPosts(int[] keys)
     {
@@ -148,6 +102,19 @@ public class ScenarioManager : MonoBehaviour
         playerProgress.AddUserPostKey(DataManager.instance.GetPost(key).UserID, key);
     }
 
+    public void AddUserPosts(int[] keys)
+    {
+        for(int i = 0; i < keys.Length; i++)
+        {
+            playerProgress.AddUserPostKey(DataManager.instance.GetPost(keys[i]).UserID, keys[i]);
+        }
+    }
+
+    public void AddUserPost(int key)
+    {
+        playerProgress.AddUserPostKey(DataManager.instance.GetPost(key).UserID, key);
+    }
+
     public void AddUsers(int[] keys)
     {
         playerProgress.AddUsersKey(keys);
@@ -157,7 +124,7 @@ public class ScenarioManager : MonoBehaviour
     public void AddUser(int key)
     {
         playerProgress.AddUserKey(key);
-        postsView.DisplayItem(key);
+        usersView.DisplayItem(key);
     }
 
     public void AddAlarm(int key)
@@ -229,12 +196,17 @@ public class ScenarioManager : MonoBehaviour
         playerProgress.MessageCurrentID = currentID;
     }
 
+    #endregion
+    
+    #region Trigger
     public void MainTrigger(int stage)
     {
         ScenarioManager.instance.playerProgress.Stage = stage;
         if (stage == 0)
         {
             // 초기 뷰 설정
+            AddUsers(new int[] { 1, 2, 3, 4, 5 });
+            AddPosts(new int[] { 0, 1, 2, 3, 4, 5});
             AddMessageAuto(5);
         }
         else if (stage == 1)
@@ -267,16 +239,20 @@ public class ScenarioManager : MonoBehaviour
         {
             // post view 호출
         }
-        */
+        
 
         //else
         {
             Debug.LogError("Event Trigger 설정 오류");
         }
+        */
     }
 
     public void SubTriggerStage1<T>(int key)
     {
 
     }
+
+    #endregion
+    
 }
