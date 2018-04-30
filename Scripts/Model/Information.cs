@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public enum InformationType { Default, Event, Education, Career } //필요시 더 추가
+public enum InformationType { Default, Event, Education, Career, Connected } //필요시 더 추가
 
 [System.Serializable]
 public class Information
@@ -39,6 +39,9 @@ public class Information
                 break;
             case "Career":
                 this.type = InformationType.Career;
+                break;
+            case "Connected":
+                this.type = InformationType.Connected;
                 break;
             default:
                 Debug.LogError("Wrong Information Type");

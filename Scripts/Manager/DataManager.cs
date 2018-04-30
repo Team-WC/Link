@@ -184,10 +184,16 @@ public class DataManager : MonoBehaviour
                         "Resources/User_Images/" + Convert.ToString(user["avatar"]));
                     Sprite avatar = IMG2Sprite.LoadNewSprite(avatar_path);
                     JArray informations_json = (JArray)user["informations"];
-                    Information[] informations = new Information[informations_json.Count];
+                    Information[] informations = new Information[Setting.InformationMaxCount];
                     for (int i = 0; i < informations_json.Count; i++)
                     {
                         informations[i] = new Information((InformationType) Enum.Parse(typeof(InformationType), informations_json[i]["type"].ToString()), informations_json[i]["text"].ToString());
+                    }
+
+                    //Default Unknown
+                    for(int i = informations_json.Count; i < Setting.InformationMaxCount; i++)
+                    {
+                        informations[i] = new Information(InformationType.Default, "Unknown");
                     }
 
                     AddUser(new User(name, avatar, informations, primaryKey));
