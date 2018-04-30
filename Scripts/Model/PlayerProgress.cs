@@ -4,22 +4,8 @@ using UnityEngine;
 using System;
 using Newtonsoft.Json;
 
-public struct Progress
-{
-    public int stage;
-    public int phase;
-
-    public String ToString()
-    {
-        return stage.ToString() + " - " + phase.ToString();
-    }
-}
-
 public class PlayerProgress
 {
-    //스테이지 진행 정도 ex) 1-1, 3-2
-    [JsonProperty]
-    private Progress progress;
     [JsonProperty]
     private int stage = 0;
     [JsonProperty]
@@ -36,11 +22,6 @@ public class PlayerProgress
     private int messageCurrentID = 0;
     [JsonProperty]
     public bool intro = false;
-
-    public Progress Progress
-    {
-        get { return progress; }
-    }
 
     public int Stage
     {
@@ -80,14 +61,13 @@ public class PlayerProgress
             return new List<int>(userPost[user_key]);
         else
         {
-            throw (new NullDataException("[NullDataException] PlayerProgress: " + progress.ToString() + " : User[" + user_key.ToString() + "] is NULL."));
+            return null;
+            //throw (new NullDataException("[NullDataException] PlayerProgress: " + progress.ToString() + " : User[" + user_key.ToString() + "]'s Post is NULL."));
         }
     }
 
     public PlayerProgress()
     {
-        progress.stage = 0;
-        progress.phase = 0;
         usersList = new List<int>();
         postsList = new List<int>();
         userPost = new Dictionary<int, List<int>>();
@@ -131,7 +111,7 @@ public class PlayerProgress
         if (userPost.ContainsKey(user_key))
         {
             if (userPost[user_key].Contains(post_key))
-                throw (new DuplicateDataException("[DuplicateDataException]PlayerProgress " + progress.ToString() + " : User[" + user_key.ToString() + "] already has the Post[" + post_key.ToString() + "]."));
+                throw (new DuplicateDataException("[DuplicateDataException]PlayerProgress : User[" + user_key.ToString() + "] already has the Post[" + post_key.ToString() + "]."));
             else
                 userPost[user_key].Add(post_key);
         }
