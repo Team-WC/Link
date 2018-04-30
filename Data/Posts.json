@@ -3,20 +3,58 @@
   [
     {
       "primaryKey": 0,
-      "userID": 0,
-      "text" : "example-text",
+      "userID": 1,
+      "text" : "Link에 오신 것을 환영합니다.\n지금 전 세계에 당신을 공유하세요.",
       "photos": [
-        "Post_0-1_Coffee.jpg",
-        "Post_0-2_Coffee.jpg"
+        "00-00.jpg"
       ],
       "timestamp": "2018-03-31 11:00 AM"
     },
     {
       "primaryKey": 1,
-      "userID": 0,
-      "text" : "example-text2",
+      "userID": 1,
+      "text" : "Link Developer Conference 가 보여준 미래 \n (이하 기술 관련 설명)",
       "photos": [
-        "Post_0-1_Coffee.jpg"
+        "01-00.jpg"
+      ],
+      "timestamp": "2018-03-31 12:00 AM"
+    },
+    {
+      "primaryKey": 2,
+      "userID": 3,
+      "text" : "게임 광고 문구",
+      "photos": [
+        "02-00.jpg",
+        "02-01.jpg"
+      ],
+      "timestamp": "2018-03-31 12:00 AM"
+    },
+    {
+      "primaryKey": 3,
+      "userID": 4,
+      "text" : "AGI 시대 1주년 \n (이하 인공지능 관련 뉴스) \n -----------------------------",
+      "photos": [
+        "03-00.png"
+      ],
+      "timestamp": "2018-03-31 12:00 AM"
+    },
+    {
+      "primaryKey": 4,
+      "userID": 5,
+      "text" : "2020 S/S",
+      "photos": [
+        "04-00_henri-pham-344496-unsplash.jpg",
+        "04-01_pete-bellis-278587-unsplash.jpg",
+        "04-02_pete-bellis-340394-unsplash.jpg"
+      ],
+      "timestamp": "2018-03-31 12:00 AM"
+    },
+    {
+      "primaryKey": 5,
+      "userID": 4,
+      "text" : "뉴욕 도시 전체가 다시 정전되었다.\n 이하 기사 전문",
+      "photos": [
+        "05-00.jpg"
       ],
       "timestamp": "2018-03-31 12:00 AM"
     }

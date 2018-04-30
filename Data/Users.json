@@ -3,20 +3,57 @@
           [
             {
               "primaryKey": 0,
-              "name" : "Link",
+              "name" : "Player",
               "avatar" : "user_001.png",
-              "informations" : [ {"type" : "Default", "text": "default information text!"},
-                {"type" : "Event", "text": "Event information text!"},
-                {"type" : "Education", "text": "Education information text!"}
+              "informations" : [ {"type" : "Event", "text": "2018년 4월 27일에 연결되었습니다."}
               ]
             },
             {
               "primaryKey": 1,
-              "name" : "Neo",
-              "avatar" : "user_002.png",
-              "informations" : [ {"type" : "Default", "text": "default information text!"},
-                {"type" : "Event", "text": "Event information text!"},
-                {"type" : "Education", "text": "Education information text!"}
+              "name" : "Link",
+              "avatar" : "01-Link.jpg",
+              "informations" : [ {"type" : "Connected", "text": "300,000,000 (30억)이 연결되었습니다."},
+                {"type" : "Event", "text": "2018년 1월에 개설."},
+                {"type" : "Default", "text": "더욱 더 열리고 ,연결된 세상을 만든다."}
+              ]
+            },
+            {
+              "primaryKey": 2,
+              "name" : "Package",
+              "avatar" : "02-package.png",
+              "informations" : [ {"type" : "Default", "text": "Unknown"}
+              ]
+            },
+            {
+              "primaryKey": 3,
+              "name" : "Cha Games",
+              "avatar" : "03-ChaGames_temp.png",
+              "informations" : [ {"type" : "Event", "text": "2018년 1월에 개설."},
+                {"type" : "Default", "text": "We make games for gamers."}
+              ]
+            },
+            {
+              "primaryKey": 4,
+              "name" : "Link News",
+              "avatar" : "04-LinkNews_temp.png",
+              "informations" : [ {"type" : "Event", "text": "2018년 3월에 개설."},
+                {"type" : "Default", "text": "빠른 뉴스, 정확한 뉴스."}
+              ]
+            },
+            {
+              "primaryKey": 5,
+              "name" : "김혜주",
+              "avatar" : "05-김혜주_user-6.png",
+              "informations" : [ {"type" : "Event", "text": "2018년 3월에 가입함"},
+                {"type" : "Career", "text": "모델"},
+                {"type" : "Connected", "text": "1,000,000(백만 명)이 연결되어있습니다."}
+              ]
+            },
+            {
+              "primaryKey": 6,
+              "name" : "Lv.1",
+              "avatar" : "06-Lv1_temp.png",
+              "informations" : [ {"type" : "Default", "text": "Level: 1"}
               ]
             }
           ]
